@@ -12,6 +12,7 @@ Das Projekt besteht aus einem Spring Boot Backend, einem React Frontend und eine
 
 ```bash
 docker-compose up --build
+```
 
 
 ## Zugängliche Dienste nach dem Start
