@@ -18,7 +18,7 @@ public class UserController {
     private final UserRepository userRepository;
 
     @GetMapping
-    @PreAuthorize("hasRole('ADMIN')") // ✅ Nur Admin darf alle sehen
+    @PreAuthorize("hasRole('ADMIN')") 
     public ResponseEntity<List<User>> getAllUsers() {
         return ResponseEntity.ok(userRepository.findAll());
     }

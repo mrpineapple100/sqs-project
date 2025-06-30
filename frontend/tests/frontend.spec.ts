@@ -45,24 +45,14 @@ test("User kann sich registrieren, einloggen, PokÃ©mon suchen, zum Album hinzufÃ
   await page.getByRole("button", { name: "Einloggen" }).click();
   console.log("Login 1. Versuch abgeschickt");
 
-  await page.waitForTimeout(1000);
-  await page.reload();
-  console.log("Wieder auf Login-Seite nach 1. Login");
+  
 
   page.once("dialog", async (dialog) => {
     console.log("Warnung beim Login:", dialog.message());
     await dialog.dismiss();
   });
 
-  await page.getByRole("button", { name: "Einloggen" }).click();
-  await page.waitForTimeout(1000);
-  await page.reload();
-  console.log("Wieder auf Login-Seite nach 1. Login");
-  await page.screenshot({ path: "4-after-reload.png" });
-
-  await page.getByLabel("Benutzername").fill(username);
-  await page.getByRole("textbox", { name: "Passwort" }).fill(password);
-  console.log("Login-Daten erneut eingegeben");
+  
 
   await Promise.all([
     page.waitForURL("**/search", { timeout: 5000 }),
