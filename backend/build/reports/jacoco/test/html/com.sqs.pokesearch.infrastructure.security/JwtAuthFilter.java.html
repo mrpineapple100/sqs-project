@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="de"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>JwtAuthFilter.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">pokesearch</a> &gt; <a href="index.source.html" class="el_package">com.sqs.pokesearch.infrastructure.security</a> &gt; <span class="el_source">JwtAuthFilter.java</span></div><h1>JwtAuthFilter.java</h1><pre class="source lang-java linenums">package com.sqs.pokesearch.infrastructure.security;
+
+import com.sqs.pokesearch.model.User;
+import com.sqs.pokesearch.repository.UserRepository;
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import lombok.RequiredArgsConstructor;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
+import org.springframework.stereotype.Component;
+import org.springframework.web.filter.OncePerRequestFilter;
+
+import java.io.IOException;
+
+@Component
+@RequiredArgsConstructor
+public class JwtAuthFilter extends OncePerRequestFilter {
+
+    private final JwtService jwtService;
+    private final UserRepository userRepo;
+
+    @Override
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
+            throws ServletException, IOException {
+
+<span class="fc" id="L29">        final String authHeader = request.getHeader(&quot;Authorization&quot;);</span>
+
+<span class="pc bpc" id="L31" title="2 of 4 branches missed.">        if (authHeader == null || !authHeader.startsWith(&quot;Bearer &quot;)) {</span>
+<span class="nc" id="L32">            filterChain.doFilter(request, response);</span>
+<span class="nc" id="L33">            return;</span>
+        }
+
+<span class="fc" id="L36">        final String token = authHeader.substring(7);</span>
+<span class="fc" id="L37">        final String username = jwtService.extractUsername(token);</span>
+
+<span class="pc bpc" id="L39" title="2 of 4 branches missed.">        if (username != null &amp;&amp; SecurityContextHolder.getContext().getAuthentication() == null) {</span>
+<span class="fc" id="L40">            User user = userRepo.findByUsername(username).orElse(null);</span>
+
+<span class="pc bpc" id="L42" title="2 of 4 branches missed.">            if (user != null &amp;&amp; jwtService.isTokenValid(token, user)) {</span>
+<span class="fc" id="L43">                System.out.println(&quot;✅ JWT erkannt für Benutzer: &quot; + username);</span>
+
+<span class="fc" id="L45">                UsernamePasswordAuthenticationToken authToken =</span>
+<span class="fc" id="L46">                        new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());</span>
+<span class="fc" id="L47">                authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));</span>
+
+<span class="fc" id="L49">                SecurityContextHolder.getContext().setAuthentication(authToken);</span>
+
+<span class="fc" id="L51">                System.out.println(&quot;🔐 Authentication gesetzt im SecurityContext&quot;);</span>
+            }
+        }
+
+<span class="fc" id="L55">        filterChain.doFilter(request, response);</span>
+<span class="fc" id="L56">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>
