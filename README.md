@@ -21,3 +21,8 @@ docker-compose up --build
 - **Frontend:** [http://localhost:3000](http://localhost:3000)  
 - **Swagger UI:** [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
 
+## Dokumentation
+
+Die Dokumentation wurde nach dem arc42-Template verfasst und ist auf Read the Docs unter folgendem Link verfügbar:
+
+[https://app.readthedocs.org/projects/mb-sqs-project/](https://app.readthedocs.org/projects/mb-sqs-project/)
