@@ -38,12 +38,9 @@ Szenario 1: Erfolgreiche Pokémon-Suche (Cache Miss)
 8. **Anzeige im Frontend**  
    Die Pokémon-Informationen werden im UI dargestellt (Name, Typ, Bild, Fähigkeiten etc.).
 
-**Laufzeitdiagramm**
 
-.. image:: images/06_runtime_hitmiss_fetch.png
-   :alt: Laufzeitdiagramm bei Cache-Miss mit erfolgreicher API-Abfrage
 
----
+
 
 Szenario 2: Erfolgreiche Pokémon-Suche (Cache Hit)
 ---------------------------------------------------
@@ -69,12 +66,7 @@ Szenario 2: Erfolgreiche Pokémon-Suche (Cache Hit)
 5. **Anzeige im Frontend**  
    Das Frontend zeigt die bekannten Pokémon-Infos aus dem Cache.
 
-**Laufzeitdiagramm**
 
-.. image:: images/06_runtime_hit.png
-   :alt: Laufzeitdiagramm bei Cache-Hit
-
----
 
 Szenario 3: Fehlgeschlagene Pokémon-Suche (falscher Name)
 ----------------------------------------------------------
@@ -116,9 +108,6 @@ Szenario 3: Fehlgeschlagene Pokémon-Suche (falscher Name)
 
       „Das eingegebene Pokémon existiert nicht.“
 
-**Laufzeitdiagramm**
 
-.. image:: images/06_runtime_404.png
-   :alt: Laufzeitdiagramm bei ungültigem Pokémon-Namen
 
 

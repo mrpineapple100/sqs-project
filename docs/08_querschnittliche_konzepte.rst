@@ -3,19 +3,12 @@ Querschnittliche Konzepte
 
 Dieses Kapitel beschreibt übergreifende Architekturkonzepte, die im gesamten System eine Rolle spielen und nicht an eine einzelne Schicht gebunden sind.
 
-UML Diagramm des Backends
---------------------------
 
-.. image:: images/08_backend_uml.png
-   :alt: Klassendiagramm oder Komponentenübersicht des Spring Boot Backends
-
-Dieses Diagramm zeigt die wichtigsten Klassen und deren Beziehungen im Backend – z. B. Controller, Services, Repositories und Datenmodelle für Pokémon, User und Album.
 
 PostgreSQL-Datenbank
 ---------------------
 
-.. image:: images/08_db_schema.png
-   :alt: Vereinfachtes ER-Diagramm oder SQL-Schema der PostgreSQL-Datenbank
+
 
 Die PostgreSQL-Datenbank enthält u. a. folgende Tabellen:
 
@@ -28,8 +21,7 @@ GitHub Actions CI/CD-Pipeline
 
 Die Anwendung nutzt **GitHub Actions**, um eine automatisierte Build-, Test- und Analysepipeline bereitzustellen. Nach jedem Commit wird der Code validiert und in Docker-Images überführt.
 
-.. image:: images/08_github_actions_pipeline.png
-   :alt: Visualisierung der GitHub Actions-Pipeline
+
 
 **Beispielstruktur (vereinfacht)**
 

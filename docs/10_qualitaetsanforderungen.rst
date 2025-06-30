@@ -15,11 +15,7 @@ Zur automatisierten Überprüfung der Codequalität wurde **SonarCloud** integri
 
 Die **API-Dokumentation** erfolgt über SpringDoc/OpenAPI. Dies erhöht die Transparenz der Schnittstellen und erleichtert sowohl Entwicklung als auch Test und Wartung.
 
-Qualitätsbaum
--------------
 
-.. image:: images/10_quality_tree.png
-   :alt: Qualitätsbaum des Projekts
 
 Qualitätsszenarien
 ------------------

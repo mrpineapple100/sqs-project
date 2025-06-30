@@ -1,11 +1,7 @@
 Verteilungssicht
 ================
 
-Infrastruktur
--------------
 
-.. image:: images/07_deployment_view.png
-   :alt: Verteilungssicht als Diagramm (Containerstruktur)
 
 Begründung für die Architekturaufteilung
 ----------------------------------------
