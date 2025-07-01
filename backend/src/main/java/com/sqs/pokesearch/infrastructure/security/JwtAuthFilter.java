@@ -40,7 +40,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
             User user = userRepo.findByUsername(username).orElse(null);
 
             if (user != null && jwtService.isTokenValid(token, user)) {
-                System.out.println("✅ JWT erkannt für Benutzer: " + username);
+                System.out.println("JWT erkannt für Benutzer: " + username);
 
                 UsernamePasswordAuthenticationToken authToken =
                         new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
@@ -48,7 +48,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 
                 SecurityContextHolder.getContext().setAuthentication(authToken);
 
-                System.out.println("🔐 Authentication gesetzt im SecurityContext");
+                System.out.println("Authentication gesetzt im SecurityContext");
             }
         }
 
